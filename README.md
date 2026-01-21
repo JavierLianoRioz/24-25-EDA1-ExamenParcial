@@ -52,14 +52,20 @@ class Lista {
     }
     
     public boolean contiene(Persona persona) {
+        return buscarPorDNI(persona.getDni()) != null;
+    }
+
+    public Persona buscarPorDNI(String dni) {
         Nodo actual = primero;
+        Persona personaAEncontrar = null;
         while (actual != null) {
-            if (actual.getPersona().getDni().equals(persona.getDni())) {
-                return true;
+            if (actual.getPersona().getDni().equals(dni)) {
+                personaAEncontrar = actual;
+                return personaAEncontrar;
             }
             actual = actual.getSiguiente();
         }
-        return false;
+        return personaAEncontrar;
     }
     
     public Persona obtenerPersona(String dni) {
